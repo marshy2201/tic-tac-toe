@@ -1,3 +1,5 @@
+@import '_svg';
+
 body {
   background: #334;
   font-family: 'Roboto', sans-serif;
@@ -12,9 +14,18 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
 #start-game {
   font-size: 1.5rem;
   padding: 20px 40px;
+}
+
+#board-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
 }

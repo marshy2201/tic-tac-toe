@@ -1,0 +1,16 @@
+svg > g > rect:first-child {
+  fill: #334;
+}
+
+line {
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+circle {
+  stroke-width: 8;
+  fill: none;
+}
+
+.grid {
+  stroke: #ddd;
+}

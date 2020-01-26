@@ -1,3 +1,17 @@
+svg > g > rect:first-child {
+  fill: #334; }
+
+line {
+  stroke-width: 8;
+  stroke-linecap: round; }
+
+circle {
+  stroke-width: 8;
+  fill: none; }
+
+.grid {
+  stroke: #ddd; }
+
 body {
   background: #334;
   font-family: 'Roboto', sans-serif; }
@@ -10,8 +24,16 @@ body {
   right: 0;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  z-index: 1; }
 
 #start-game {
   font-size: 1.5rem;
   padding: 20px 40px; }
+
+#board-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0; }
