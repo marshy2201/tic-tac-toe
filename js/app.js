@@ -21,4 +21,7 @@ startButton.addEventListener('click', () => {
   game.startGame();
 });
 
-document.addEventListener('click', (e => console.log(e)));
+/**
+ * Listen for clicks on the board 
+ */
+document.addEventListener('click', e => game.handleClick(e));
