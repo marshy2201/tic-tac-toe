@@ -1,6 +1,8 @@
 class Symbol {
-  constructor(type) {
+  constructor(type, id) {
     this.type = type;
+    this.x = parseInt(id.charAt(8));
+    this.y = parseInt(id.charAt(6));
   }
 
   /**
