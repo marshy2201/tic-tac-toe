@@ -37,7 +37,7 @@ class Game {
    */
   handleClick(e) {
     if (game.ready && e.target.id.includes('space')) {
-      const symbol = this.activePlayer.createSymbol();
+      const symbol = this.activePlayer.createSymbol(e);
       
       this.playSymbol(symbol, e);
     }
@@ -79,6 +79,37 @@ class Game {
    * Updates game state after symbol has been added to the board
    */
   updateGameState() {
-    this.switchPlayers();
+    if (this.checkForWin()) {
+      game.ready = false;
+    } else {
+      this.switchPlayers();
+    }
+  }
+
+  /**
+   * Check if the active player has won returning a boolean
+   */
+  checkForWin() {
+    const x = this.activePlayer.symbols.map(symbol => symbol.x);
+    const y = this.activePlayer.symbols.map(symbol => symbol.y);
+
+    // check horizontal & vertical wins
+    for (let i = 0; i < 3; i++) {
+      if (x.filter(number => number === i).length === 3) return true;
+      if (y.filter(number => number === i).length === 3) return true;
+    }
+
+    // check diagonal wins
+    if (this.activePlayer.symbols.filter(symbol => symbol.x === symbol.y).length === 3) return true;
+    
+    const diagonalTopRightBottomLeft = this.activePlayer.symbols.filter(symbol => {
+      return (symbol.y === 2 && symbol.x === 0) ||
+             (symbol.y === 1 && symbol.x === 1) ||
+             (symbol.y === 0 && symbol.x === 2)   
+    });
+
+    if (diagonalTopRightBottomLeft.length === 3) return true;
+
+    return false;
   }
 }
