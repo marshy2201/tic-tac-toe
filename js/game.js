@@ -80,7 +80,7 @@ class Game {
    */
   updateGameState() {
     if (this.checkForWin()) {
-      game.ready = false;
+      this.endGame()
     } else {
       this.switchPlayers();
     }
@@ -111,5 +111,34 @@ class Game {
     if (diagonalTopRightBottomLeft.length === 3) return true;
 
     return false;
+  }
+
+  /**
+   * End Game
+   */
+  endGame() {
+    game.ready = false;
+
+    document.querySelector('#game-over h3').textContent = `${this.activePlayer.name} Wins!`;
+    document.getElementById('game-over').style.display = "block";
+  }
+
+  /**
+   * Reset Game
+   */
+  resetGame() {
+    // hide game-over element
+    document.getElementById('game-over').style.display = "none";
+
+    // remove g elements that where created
+    const groups = document.querySelectorAll('svg > g > g');
+    
+    for (let i = 0; i < groups.length; i++) {
+      document.querySelector('svg > g').removeChild(groups[i]);
+    }
+
+    // Create new Game
+    game = new Game();
+    game.startGame();
   }
 }

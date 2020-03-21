@@ -10,10 +10,10 @@ $.snowfall.start({
 }); 
 
 // New game class
-const game = new Game();
+let game = new Game();
 
 /**
- * Listen for click on `#start-game` and class startGame on game object
+ * Listen for click on `#start-game`
  */
 const startButton = document.getElementById('start-game');
 
@@ -25,3 +25,10 @@ startButton.addEventListener('click', () => {
  * Listen for clicks on the board 
  */
 document.addEventListener('click', e => game.handleClick(e));
+
+/**
+ * Listen for click on `#play-again`
+ */
+const playAgainButton = document.getElementById('play-again');
+
+playAgainButton.addEventListener('click', () => game.resetGame());
