@@ -1,17 +1,21 @@
 class Player {
-  constructor(name, id, symbol, active) {
+  constructor(name, id, symbolType, active) {
     this.name = name;
     this.id = id;
-    this.symbol = symbol;
+    this.symbolType = symbolType;
     this.active = active;
+    this.symbols = [];
   }
 
   /**
    * Create SVG symbol
    * @param {Object} e 
    */
-  createSymbol() {
-    const symbol = new Symbol(this.symbol);
+  createSymbol(e) {
+    const symbol = new Symbol(this.symbolType, e.target.id);
+    
+    this.symbols.push(symbol);
+
     return symbol.drawSvgSymbol();
   }
 }
