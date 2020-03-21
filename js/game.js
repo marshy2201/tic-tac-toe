@@ -36,7 +36,10 @@ class Game {
    * @param {Object} e 
    */
   handleClick(e) {
-    if (game.ready && e.target.id.includes('space')) {
+    const targetIsSpace = e.target.id.includes('space'); // check if target has an id including "space"
+    const targetNextSibling = !e.target.nextElementSibling; // check if the target has a next sibling, this is to stop adding a nought or cross ovrlaying
+
+    if (game.ready && targetIsSpace && targetNextSibling) {
       const symbol = this.activePlayer.createSymbol(e);
       
       this.playSymbol(symbol, e);
