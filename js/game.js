@@ -83,7 +83,9 @@ class Game {
    */
   updateGameState() {
     if (this.checkForWin()) {
-      this.endGame()
+      this.endGame();
+    } else if (this.activePlayer.symbols.length === 5) {
+      this.endGame(true);
     } else {
       this.switchPlayers();
     }
@@ -119,10 +121,13 @@ class Game {
   /**
    * End Game
    */
-  endGame() {
+  endGame(noMoreSpaces = false) {
     game.ready = false;
+    
+    // check if the game ended with no more moves left
+    const message = noMoreSpaces ? "Draw!" : `${this.activePlayer.name} Wins!`
 
-    document.querySelector('#game-over h3').textContent = `${this.activePlayer.name} Wins!`;
+    document.querySelector('#game-over h3').textContent = message;
     document.getElementById('game-over').style.display = "block";
   }
 
